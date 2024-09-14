@@ -1,0 +1,18 @@
+<h1>Welcome to the Cow Management System</h1>
+
+<h2>Search for Cow by ID</h2>
+<form method="get">
+    <input type="text" name="search" placeholder="Enter Cow ID" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<h2>List of Cows</h2>
+<ul>
+  {% for cow in cows %}
+    <li>Cow ID: {{ cow.cow_id }} | Color: {{ cow.color }}
+      <a href="{% url 'milk_cow' cow.cow_id %}">Milk the cow</a>
+    </li>
+  {% empty %}
+    <li>No cows found with the given ID.</li>
+  {% endfor %}
+</ul>
